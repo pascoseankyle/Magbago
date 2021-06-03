@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Magbago</title>
         <link href="/css/app.css" rel="stylesheet">
-        <!-- <link rel="icon" href="/img/magbago logo.png" type="image" sizes="16x16"> -->
+        <link rel="icon" href="favicon.png" type="image" sizes="16x16">
     </head>
 
     <body class="welcome-body">
@@ -52,8 +52,9 @@
                 <form class="select-category" action="" method="">
                 @csrf
                     <select name="category" id="category">
-                        <option value="scientific-technological">scientific-technological</option>
-                        <option value="sociopolitical">sociopolitical</option>
+                    @foreach($cat as $cat)
+                        <option value="{{ $cat->name }}">{{  $cat->name }}</option>
+                    @endforeach
                     </select>
                     <button class="select-button" type="submit"> select </button>
                 </form>

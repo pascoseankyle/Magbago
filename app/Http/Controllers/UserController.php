@@ -59,6 +59,6 @@ class UserController extends Controller
         $user->img = $fileNameToStore;
         $user->password = Crypt::encryptString($request->password);
         $user->save();
-        return redirect('login');
+        return redirect('welcome');
     }
 }

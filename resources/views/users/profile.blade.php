@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Magbago</title>
         <link href="/css/app.css" rel="stylesheet">
+        <link rel="icon" href="favicon.png" type="image" sizes="16x16">
     </head>
 
     <body class="welcome-body">

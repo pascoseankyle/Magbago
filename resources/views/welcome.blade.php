@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Magbago</title>
         <link href="/css/app.css" rel="stylesheet">
-        <!-- <link rel="icon" href="/img/magbago logo.png" type="image" sizes="16x16"> -->
+        <link rel="icon" href="favicon.png" type="image" sizes="16x16">
     </head>
 
     <body class="welcome-body">
@@ -33,7 +33,7 @@
         <div class="welcome-right">
             <div class="welcome-r-container">
                 <div class="welcome-r-card">
-                    <form action="login" method="Post"> 
+                    <form action="auth" method="POST"> 
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input id="email" name="email" type="text" placeholder="Email" autocomplete="off">

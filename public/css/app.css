@@ -431,3 +431,44 @@ a:hover {
     height: 80px;
     overflow: auto;
 }
+/* Admin */
+.card {
+    background-color: white;
+    padding: 100px;
+    float: left;
+}
+.cat-list {
+    float: left;
+    padding: 100px;
+    height: 300px;
+    overflow: auto;
+    background-color: rgb(218, 216, 216);
+}
+.cat-edit {
+    color: green;
+    padding: 2px;
+}
+.cat-edit:hover{
+    color:white;
+    background-color: darkgreen;
+}
+.cat-delete{
+    color: red;
+}
+.cat-delete:hover{
+    background-color: #f54748;
+    color: white;
+}
+.cat-posts{
+    margin: 10px;
+}
+.logout {
+    padding: 10px;
+    width: 400px;
+    background-color: red;
+    color: white;
+}
+.logout:hover{
+    background-color: transparent;
+    color: red;
+}

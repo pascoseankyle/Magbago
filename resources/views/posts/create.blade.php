@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Magbago</title>
         <link href="/css/app.css" rel="stylesheet">
-        <!-- <link rel="icon" href="/img/magbago logo.png" type="image" sizes="16x16"> -->
+        <link rel="icon" href="favicon.png" type="image" sizes="16x16">
     </head>
 
     <body class="welcome-body">
@@ -35,8 +35,9 @@
                         <input name="img" type="file">                   
                         <label> Category </label>
                         <select id="category" name="Category">
-                            <option value="scientific-technological">scientific-technological</option>
-                            <option value="sociopolitical ">sociopolitical </option>
+                        @foreach($cat as $cat)
+                            <option value="{{ $cat->name }}">{{ $cat->name }}</option>
+                        @endforeach
                         </select>
                         <button type="submit"> post! </button>
                     </form>

@@ -12,28 +12,36 @@ class AuthController extends Controller
     public function login(Request $request) {
         $email = $request->input('email');
         $password = $request->input('password');
-        $userPassword = User::select('id' , 'password', 'email', 'img')->where('email', '=', $email)->get(); 
+        $userPassword = User::select('id' , 'password', 'email', 'img', 'type')->where('email', '=', $email)->get(); 
         if(count($userPassword) > 0){
             $i = 0;
             foreach($userPassword as $userpass) { 
                 $result[$i] = $userpass->password;
                 $id = $resultId[$i] = $userpass->id;
-                $photo = $resultPhoto[$i] = $userpass->img;
+                $type = $t[$i] = $userpass->type;
                 $decryptPassword = Crypt::decryptString($result[$i]); 
                 $i++;
             }
-            if($decryptPassword == $password) { 
-                $request->session()->forget('name');
-                return redirect('profile')->withCookie(cookie('name', $email))
-                ->withCookie(cookie('id', $id))
-                ->withCookie(cookie('photo', $photo));
+            if($decryptPassword == $password){ 
+                if($type===2){
+                   $request->session()->forget('name');
+                    return redirect('admin')
+                    ->withCookie(cookie('type', $type))
+                    ->withCookie(cookie('id', $id));
+                }
+                else {
+                    $request->session()->forget('name');
+                    return redirect('profile')
+                    ->withCookie(cookie('type', $type))
+                    ->withCookie(cookie('id', $id));
+                }
             }
             else{
-                return redirect('login');
+                return redirect('welcome');
             }
         }
         else{
-            return redirect('login');
+            return redirect('welcome');
         }
     }  
 }

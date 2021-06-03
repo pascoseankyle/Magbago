@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 class PostController extends Controller {
     public function posts(Request $request){
+        $cat = Category::all();
         $category = $request->category;
         if($category == ""){
             $category = "scientific-technological";
@@ -15,7 +17,11 @@ class PostController extends Controller {
             $category = $request->category;
         } 
         $posts = Post::orderByRaw( 'created_at DESC' )->where('Category', '=', $category)->get();
-        return view('/posts/index', compact('posts'));
+        return view('/posts/index', compact('posts','cat'));
+    }
+    public function cat(Request $request){
+        $cat = Category::all();
+        return view('/posts/create', compact('cat'));
     }
     public function deletePost($id){
         $post = Post::find($id);
